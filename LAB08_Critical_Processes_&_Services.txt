@@ -1,0 +1,54 @@
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+			Critical Processess/Services Checks
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Action: Familiarize Students with checking the status of services and processes.
+
+Condition: Given a classroom environment, student laptops, VM’s, and student handouts.
+
+Standard: Successfully check the status of services and processes. 
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+****************************************************
+PART I (Checking Services and General connectivity)
+****************************************************
+	1) Open CLI as root
+	
+	2) run the following commands:
+		service logstash status
+		service elasticsearch status
+		service kibana status
+		service cron status
+		ping 192.168.1.12
+		ping 192.168.1.13
+		ping the gateway
+		ping DNS
+		ping Data Miner
+		ufw status
+		crontab -l
+		free -h
+		top -o %MEM
+		netstat -plunt
+		ss -amp | grep java
+		
+	3) open the Elastic HQ Icon on the desktop and connect to your localhost:9200
+		a. check the the following areas:
+			node diagnostics
+			click on each node independently to check the stats
+			check the size of your indices by selecting the indice button
+			check your mappings by clicking on the mappings buttons
+			run JSON REST API queries via the </>REST button
+			
+		b. Check your cluster by running the following on the CLI
+			curl -XGET 'http://localhost:9200/_cluster/health?pretty=true'
+			curl -XGET 'http://localhost:9200/_cluster/state'
+			curl -XGET 'http://localhost:9200/_cluster/stats?human&pretty'
+			curl -XGET 'http://localhost:9200/_nodes/stats'
+			curl -XGET 'http://localhost:9200/_cluster/stats?human&pretty'
+			curl http://localhost:9200/_cat/indices
+			curl http://localhost:9200/_cat/count
+
+	
+	
+	
+		

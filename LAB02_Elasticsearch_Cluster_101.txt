@@ -1,0 +1,83 @@
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+				ELASTICSEARCH CLUSTER
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Action: Familiarize Students with Elasticsearch HQ plugin to view the Elasticsearch Cluster; location of important Elasticsearch configuration files and commands to check the health of Elasticsearch via CLI.
+
+Condition: Given a classroom environment, student laptops, VM’s, and student handouts.
+
+Standard: Gain Familiarization of how to access and view the state of the Elasticsearch Cluster via the HQ plugin; run CLI commands.
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ACCESSING HQ PLUGIN:
+
+**************
+PART I (GUI)
+**************
+	1) Login to any of the VM's (preferably the Master Node, elk1{.10})
+	2) On the Desktop, open the icon labled "elastic HQ" that has a magnifying glass image
+	3) On the very top left of the page you will see a text box. By default it loads "http://localhost:9200"
+		a. Depending on how the cluster is setup, you would have to put the IP address of where the elasticsearch
+		resides. In this case elasticsearch resides on this host. 
+		b. SELECT "connect"
+	4) This is the main page for the HQ Plugin. Click around and familizaize yourself with this GUI used to manage the ELASTICSEARCH CLuster
+	5) SELECT "</> REST"
+		a. This is a very powerful section where you run JSON/REST API queries to your elasticsearch cluster to query 
+		several important items: IE: cluster health, stats, flush, refresh, etc.
+	6) Instructor will demonstrate the rest of the fucntionality of this GUI
+
+**************	
+PART II (CLI)
+**************
+	1) you can run curl commands via the CLI to interact with the cluster.
+	2) Open a terminal and run this command:
+		curl -XGET 'http://localhost:9200/_cluster/health?pretty=true'
+		curl -XGET 'http://localhost:9200/_cluster/state'
+		curl -XGET 'http://localhost:9200/_cluster/stats?human&pretty'
+		curl -XGET 'http://localhost:9200/_nodes/stats'
+		curl -XGET 'http://localhost:9200/_cluster/stats?human&pretty'
+		curl http://localhost:9200/_cat/indices
+		curl http://localhost:9200/_cat/count
+		
+**********************************	
+PART III (File Location/Commands)
+**********************************	
+	1) Open Terminal
+	2) as Root run the following commands to learn and check the status of Elasticsearch (which runs on top of java)
+		This will show you the status of the process elasticsearch:
+			service elasticsearch status
+			
+		This will show you the listening TCP ports listening with the JAVA process:
+			netstat -plunt | grep java
+			
+		This will show you all the process status and information for elasticsearch:
+			ps aux | grep elasticsearch
+			
+		This will show you all the processes on the host, sorted my MEMORY consumption:
+			top -o %MEM
+			
+		This will show you all the established connections, and owner of processes associated with java:
+			ss -amp | grep java
+	
+	3) Lets expore the critical elasticsearch file locations:
+		Location Configuration Files:
+			/etc/elasticsearch/elasticsearch.yml
+		
+		Location of the data indexed by default. to change this location you must modify elasticsearch.yml
+			/var/lib/elasticsearch/data
+		
+		Location of environment Variables:
+			/etc/default/elasticsearch
+
+		Location of Logs:
+			/var/log/elasticsearch
+
+		Location of Plugins:
+			/usr/share/elasticsearch/plugins
+
+		Location of Scripts:
+			/etc/elasticsearch/scripts
+	
+	
+		

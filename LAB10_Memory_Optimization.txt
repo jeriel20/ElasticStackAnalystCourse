@@ -1,0 +1,84 @@
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=--=-=--=-=
+				Memory Optimization and Elasticsearch Configuration Changes
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=---=-=-=--=-=--=--=-
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=---=-=-=--=-=--=--=-
+Action: Familiarize students on where to make OS and  Elasticsearch memory configuration changes to improve performance of the cluster.
+
+Condition: Given a classroom environment, student laptops, VM’s, and student handouts.
+
+Standard: Successfully make changes and restart the cluster.
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=---=-=-=--=-=--=--=-
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=---=-=-=--=-=--=--=-
+****************************************************
+PART I (Memory Swap Configuration for Ubuntu 14.04)
+****************************************************
+	1) as root edit this file /etc/sysctl.conf
+		Cat the contents of the swappiness file to verify the current setting (you should see 60 there)
+			cat /proc/sys/vm/swappiness
+			
+		Open the file as root in an editor:
+			nano /etc/sysctl.conf
+			
+		Add the following line at the very bottom. Save and Exit:
+			vm.swappiness = 10
+			
+		Reload sysctl otherwise this change won't take into effect until the next reboot
+			sysctl -p
+		
+		Cat the contents of the swappiness file to ensure took.
+			cat /proc/sys/vm/swappiness
+	
+	
+************************************************************************************************
+PART II (Making Changes to Elasticsearch.yml requires Restarting the Elasticsearch Cluster)
+************************************************************************************************
+PREFACE:
+	Display the contents of elasticsearch.yml
+		less /etc/elasticsearch/elasticsearch.yml
+		
+	If you make any changes to this document you must restart elasticsearch as decribed below:
+	
+	MAKING ADVANCED CONFIGURATION CHANGES IS BEYOND THE SCOPE OF THE ANALYST COURSE. (THIS IS TAUGHT IN THE DEVELOPERS COURSE)
+	
+RESTARTING The Cluster:
+
+	1) a. Open google chrome by selecting the icon on the Desktop (192.168.1.12 ELK2)
+		b. open the Elasticsearch HQ icon on the desktop and connect to the Cluster
+	
+	2) select the little green tree icon on the top right on the Chrome browser ( this will open up the JSON server interaction)
+		a. DISABLE SHARDS:
+			PUT /_cluster/settings
+			{
+				"transient" : {
+					"cluster.routing.allocation.enable" : "none"
+				}
+			}
+		b. Select the little green arrow button and you will see the response on the right show up as "acknowledge": true,
+			
+	3) From the Elastic HQ Plugin
+		a. Flush all indices by selecting the </>REST button. Select the icon that says "FLUSH".
+			You will see a response that says "indices Flushed"
+		
+	4) From the CLI restart Elasticsearch as root
+		a. service elasticsearch restart
+			
+	5) Verify that the node joins the cluster by checking the HQ plugin in the Browser. The node will be red. then will go
+		to blue when joined successfully.
+	
+	6) Enable shards by selecting the little green tree icon on the top right on the Chrome browser
+		a. ENABLE SHARDS:
+			PUT /_cluster/settings
+			{
+				"transient" : {
+					"cluster.routing.allocation.enable" : "all"
+				}
+			}
+		b. Select the little green arrow button and you will see the response on the right show up as "acknowledge": true,
+	
+	7.) Verify  the status of the cluster goes back to greem by looking at the HQ Plugin main menu screen
+	
+	8.) Repeat steps 1-7 for the other Nodes in the cluster!
+	
+	
+	
+		

@@ -1,0 +1,61 @@
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+				Restarting the Cluster
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Action: Familiarize Students with the process to restart the Cluster gracefully.
+
+Condition: Given a classroom environment, student laptops, VM’s, and student handouts.
+
+Standard: Successfully restart the cluster.
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+PREFACE:
+There are many reasons to have the need to resart the cluster. The most commomn example is when making any configuration changes to Elasicsearch Cluster.
+**It is important to note here that the best practice for restarting the Cluster is as follows:
+	a. Non-Master/Data nodes (.12, .13)
+	b. Master/Data Node (.10)
+	c. Client Node (N/A)
+	
+****************************************************
+PART I (Restarting the Elasticsearch Cluster)
+****************************************************		
+	1) a. Open google chrome by selecting the icon on the Desktop (192.168.1.12 ELK2)
+		b. open the Elasticsearch HQ icon on the desktop and connect to the Cluster
+	
+	2) select the little green tree icon on the top right on the Chrome browser ( this will open up the JSON server interaction)
+		a. DISABLE SHARDS:
+			PUT /_cluster/settings
+			{
+				"transient" : {
+					"cluster.routing.allocation.enable" : "none"
+				}
+			}
+		b. Select the little green arrow button and you will see the response on the right show up as "acknowledge": true,
+			
+	3) From the Elastic HQ Plugin
+		a. Flush all indices by selecting the </>REST button. Select the icon that says "FLUSH".
+			You will see a response that says "indices Flushed"
+		
+	4) From the CLI restart Elasticsearch as root
+		a. service elasticsearch restart
+			
+	5) Verify that the node joins the cluster by checking the HQ plugin in the Browser. The node will be red. then will go
+		to blue when joined successfully.
+	
+	6) Enable shards by selecting the little green tree icon on the top right on the Chrome browser
+		a. ENABLE SHARDS:
+			PUT /_cluster/settings
+			{
+				"transient" : {
+					"cluster.routing.allocation.enable" : "all"
+				}
+			}
+		b. Select the little green arrow button and you will see the response on the right show up as "acknowledge": true,
+	
+	7.) Verify  the status of the cluster goes back to greem by looking at the HQ Plugin main menu screen
+	
+	8.) Repeat steps 1-7 for the other Nodes in the cluster!
+	
+	
+	
+		

@@ -1,0 +1,56 @@
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+				LOGSTASH 101
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Action: Familiarize Students with where Logstash binary and configuration files reside; how Logstash service operates in Linux.
+
+Condition: Given a classroom environment, student laptops, VM’s, and student handouts.
+
+Standard: Successfully stop and restart Logstash service; locate binaries; locate layout of configuration files.
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+************************
+PART I (File Locations)
+************************
+	1) Open CLI
+	2) navigate to the logstash config directory
+		cd /etc/logstash
+		ls -l
+	3) this directory is where all the logstash config files reside
+		Contains all the Conf files and Filters:
+		/etc/logstash/policy
+		
+		Contains the active conf files (the is the only folder that is checked when logstash as service is running)
+		/etc/logstash/conf.d
+
+		Contains custom dictionaries referenced by config files for the translate functions:
+		/etc/logstash/patterns
+		
+		Contains custom dictionaries referenced by config files for custom grok patterns:
+		/etc/logstash/dictionaries
+		
+		Contains debug fuctions:
+		/etc/logstash/devel
+	
+	4) Now lets navigate to the location of the logstash binaries:
+		This is where the binaries reside (this is important to know for logstash Debugging and installing plugins):
+		cd /opt/logstash/bin
+		ls -l
+		
+		This is where the rest of the logstash files reside such as libraries, etc:
+		cd /opt/logstash/
+		ls -l
+		
+		
+
+*************************************
+PART II (Configuration File for Bro)
+*************************************
+	1) using geany, lets analyze the current logstash bro config file used to index logs:
+		geany /etc/logstash/policy/new_bro/jeriel_bro.conf &
+		
+	2) Instructor will explain the configuration file.
+	
+	
+	
+		

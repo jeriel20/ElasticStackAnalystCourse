@@ -1,0 +1,40 @@
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=--=-=--=-=
+								Modify Logstash Configuration File
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=---=-=-=--=-=--=--=-
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=---=-=-=--=-=--=--=-
+Action: Familiarize students modifying a Logstash confinguration file using sed.
+
+Condition: Given a classroom environment, student laptops, VM’s, and student handouts.
+
+Standard: Successfully modify the Logstash conf for the addition of a new sensor.
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=---=-=-=--=-=--=--=-
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=---=-=-=--=-=--=--=-
+
+****************************************************
+PART I (Modify Configuration file)
+****************************************************
+	1) Open a CLI as root
+	
+	2) navigate to /etc/logstash/policy/new_bro/
+		cd /etc/logstash/policy/new_bro/
+		
+	3) copy file for you to mess with
+		cp jeriel_bro.conf yourname_bro.conf
+	
+	4) using SED and GEANY add INPUT functions for a new sensor named "usareur-yourInitials-nj"
+		HINT (Copy and paste Input fucntion only into a new file using GEANY):
+		<newfilename> | sed 's|usareur-tlaw-nj|usareur-yourInitials-nj|g' > <newestfilename>
+		
+		HINT: (now all ya have to do is copy the new contents after the current Input functions)
+	
+	5) To test your configuration file to ensure that is is syntax correct run the following command:
+	
+		/opt/logstash/bin/logstash -f yourFileName --configtest
+	
+	6) Students will come up to the front and demonstrate their new configuration file.
+	
+	7) Instructor will demonstrate how to do this.
+	
+	8) Link your file to /etc/logstash/conf.d
+	
+		ln -s /etc/logstash/policy/new_bro/<yourFileName> /etc/logstash/conf.d

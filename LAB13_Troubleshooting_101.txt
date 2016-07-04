@@ -1,0 +1,99 @@
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=--=-=--=-=
+								Troubleshooting 101
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=---=-=-=--=-=--=--=-
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=---=-=-=--=-=--=--=-
+Action: Familiarize students the basics of troubleshooting Linux and ELK.
+
+Condition: Given a classroom environment, student laptops, VM’s, and student handouts.
+
+Standard: Successfully execute commands to check what may be causing issues with ELK or the Linux Host.
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=---=-=-=--=-=--=--=-
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=---=-=-=--=-=--=--=-
+****************************************************
+PART I (Deleting oversized logsize in /var/log)
+****************************************************
+	1) Open a CLI as root
+	
+	2) Run the command to view the size of the /var/log directory:
+		du -sh /var/log
+		
+	3) Over time the /var/log/elasticsearch and /var/log/logstash get very large and cause seruous problems.
+	
+	4) Create a BASH SCRIPT then a CRON JOB to Delete the contents of the /var/log/logstash.log file or the /var/log/elasticsearch.log
+		***HINT - use the command
+		
+		truncate -s 0 <filename>
+	
+	4) Students will come up to the front and demonstrate their method to delete the logs.
+	
+
+************************************************************************************************
+PART II (General Linux Troubleshooting)
+************************************************************************************************
+	1) Open a CLI are root
+		
+	2) the following are basic linux troubleshooting commands. Ensure to read the man pages to have better usage of them
+	
+		top
+		ps aux | <name of process>
+		grep -i error /var/log/syslog
+		netstat
+		ping
+		kill
+		ifconfig
+	
+	3) Getting RAM info:
+				cat /proc/meminfo
+
+			or if you want to get just the amount of ram you can do:
+				cat /proc/meminfo | head -n 1
+
+			Another fun thing to do with ram is actually open it up and take a peek. This next command will show you all the string (plain text) values in ram.
+				sudo dd if=/dev/mem | cat | strings
+	
+	4) Getting CPU info:
+		Sometimes in troubleshooting we want to know what processor we are dealing with along with how much cpu is currently being
+		used by our OS and programs. We can do this with these two commands.
+			cat /proc/cpuinfo
+			top
+	
+	5) Getting Temperature of your CPU:
+		Keeping a computer within a safe temperature is the key to maintaining a stable system.
+			cat /proc/acpi/thermal_zone/THRM/temperature
+			
+	6) how much hard drive space you have left:
+		df -h
+		
+	7) what hard drives are currently detected:
+		fdisk -l
+		
+	8) Installed Programs
+		Ever want to find all the packages that are installed on your system? You can find all the packages and also find
+		out why they are on your system. You can even determine what packages depend on them if any.
+			Find all installed packages
+				dpkg --get-selections | less
+				
+			Find out why a packages is installed and what depends on it
+				aptitude why packagename
+
+			Find out where the package stores all of its files
+				dpkg -L packagename
+				
+	9) list all files open on your system:
+		lsof
+	
+	10) keep an eye on something for awhile:
+		watch ls
+		watch df -h
+		
+	11) See if you have any kernel issues:
+		dmesg | less
+
+************************************************************************************************
+PART III (General ELK Troubleshooting)
+************************************************************************************************
+	1) Go back and revisit LAB 8 and LAB 11. Most of the time there something wrong with connectivity or processes.
+	
+	2) ALL else fails reboot
+	
+	3) USE GOOGLE

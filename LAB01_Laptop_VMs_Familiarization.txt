@@ -1,0 +1,50 @@
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+			VM and Laptop Familiarization
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Action: Familiarize Students with Laptop/VM environment
+
+Condition: Given a classroom environment, student laptops, VM’s, and student handouts.
+
+Standard: Gain Familiarization of how to login and utilize the resources provided to the students.
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Laptop OS = Ubuntu 16.04
+LAPTOP CREDENTIALS:
+	Login Username = student#
+	Password = findaway
+
+VIRTUALBOX VIRTUAL MACHINES:
+	3 Total Hosts Clustered
+	Username = jeriel
+	Password = password
+HOSTNAMES:
+	elk1 {192.168.1.10}
+	elk2 {192.168.1.12}
+	elk3 {192.168.1.13}
+
+NETWORK: contained within a internal only network (non-routable)
+
+SHARE DRIVE LOCATION:
+	1) Open terminal
+	2) As root, navigate to /media
+		cd /media/
+	3) The shared folder is mounted in /media. You can copy lab docs or any docs from the host OS
+	to the VM's via this shared folder.
+
+DESKTOP CONTENTS:
+	1) There is a Folder labeled "VM Shared Folder#". This is a Share Drive that links inside each
+	VM, in order for you to move files from your host OS to the VM environment if necessary.
+	
+	2) There is a Folder on labeled "Lab Docs". This Folder contains all the Labs.
+	
+	3) The rest is self-explanatory shortcuts..."Terminal", "Virtualbox", and "Google"
+
+ROOT SUPER USER PRIVELEGE:
+	1) In the Terminal type "sudo -s"
+	2) Enter your the password for user jeriel
+	3) Now you are root
+
+KIBANA CREDENTIALS:
+	URL: https://localhost
+	Username: admin
+	Password: password

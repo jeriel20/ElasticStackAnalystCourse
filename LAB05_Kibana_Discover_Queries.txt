@@ -1,0 +1,39 @@
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+					KIBANA DISCOVER TAB
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Action: Familiarize Students with Kibana Queries in the Discover Tab of Kibana; build custom queries; save queries; analyze bro logs. Students will demonstrate to class at least 5 custom query to the class.
+
+Condition: Given a classroom environment, student laptops, VM’s, and student handouts.
+
+Standard: successfully create, save, and edit custom 5 queries for Bro Logs. Conduct Analysis and demonstrate a query to the class. 
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+************************
+PART I (Discover Tab GUI)
+************************
+	1) Open Kibana via the shortcut on the Desktop of ELK1 {.10}
+	
+	2) After authenticating, navigate to the discover tab
+		
+	3) Select the time icon on the top right
+	
+	4) Set the absoute Time range form May 4th 2016 to May 6th 2016. you will see in the time graph all the logs.
+
+	5) For this course all the Bro Logs data set was generated on the above aforementioned dates.
+	
+	6) Instructor will demontrate how to build, save, edit, queries.
+	
+
+*************************************
+PART II (BRO Logs KIBANA Quieries)
+*************************************
+	1) Build 5 custom queries for 5 different bro log types. For example for bro DNS, SMTP, HTTP, FILES, CONN, etc.
+	
+	2) Students will come up to the front with their laptop and demontrate to the class 1 of their custom queries.
+	
+	****Ensure you actually save the 5 queries because the visualizations we build in the next lab requires the use of saved queries.
+	
+	
+	
+		

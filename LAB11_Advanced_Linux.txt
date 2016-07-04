@@ -1,0 +1,109 @@
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=--=-=--=-=
+								ADVANCED LINUX
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=---=-=-=--=-=--=--=-
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=---=-=-=--=-=--=--=-
+Action: Familiarize students with python scripts, bash scripts, rsync, and cron jobs.
+
+Condition: Given a classroom environment, student laptops, VM’s, and student handouts.
+
+Standard: Successfully create a BASH script and setup a new cron job.
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=---=-=-=--=-=--=--=-
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=---=-=-=--=-=--=--=-
+****************************************************
+PART I (Python Script)
+****************************************************
+	1) Open the Python script called "logWorker" that is located in the /scripts directory with Geany
+		geany /scripts/logWorker &
+		
+	2) Instructor will discuss the script with the class
+	
+
+************************************************************************************************
+PART II (BASH Script and File Permissions)
+************************************************************************************************
+	1) The objective of this lab is to practice building a useful BASH Script and setting it to run
+		as a cron job as root and change the persmissions of the script.
+		
+	2) Instructor will discuss how CPT uses BASH Script in USAREUR
+	
+	3) create a bash script in the /scripts directory to check the memory usage of the host computer or a script to check the status of the
+		important services with a DTG and have it written to a file.
+		EXAMPLE:
+	
+		touch jeriel
+		touch status_check_services
+		nano jeriel
+		#!/bin/bash
+		echo "------------------------------------" >> /scripts/status_check_services
+		service elasticsearch status >> /scripts/status_check_services
+		service logstash status >> /scripts/status_check_services
+		service kibana status >> /scripts/status_check_services
+		service cron status >> /scripts/status_check_services
+		date >> /scripts/status_check_services
+		echo "------------------------------------" >> /scripts/status_check_services
+	
+	4) Change the file properties to be an executable
+		chmod 776 /scripts/status_check_services
+		ls -l /scripts/status_check_services
+
+************************************************************************************************
+PART III (CRON JOBS)
+************************************************************************************************
+	1) The objective of this lab is to take the bash script you just built and set it up as a cron job
+	
+	2) To view your crontab for root run the following command 
+		crontab -l
+		
+	3) To edit the crontab run the following commands
+		Opens the cron jobs in nano:
+			env EDITOR=nano crontab -e
+		
+		Lists the conjobs:
+			crontab -l
+			
+		Creates a new cron table:
+			crontab -e
+		
+		Removes a cron table and all scheduled jobs
+			crontab -r
+			
+	4) ADD YOU BASH SCRIPT AS A CRON JOB AS ROOT TO RUN EVERY 10 MINUTES. (don't Forget to restart the cron service)
+	
+	5) Students will come up to the front and demonstrate what BASH Script they built and set as a cron job
+			
+--------------------------------------------------------
+CRONTAB MUST KNOWS:
+--------------------------------------------------------
+	1 2 3 4 5 COMMAND
+ 
+		1=minute (0-59)
+		2-hour (24 hour format, 0-23)
+		3= day of the month (1-31)
+		4=month of year (1-12)
+		5=day of week (0-6, 0 or 7=Sunday, 1-6 = Mon-Sat)
+		 
+		5,20,35,50 * * * * /path/to/command
+		 
+		example:
+		5,20,35,50 * * * * /scripts/movefiles
+************************************************************************************************
+PART IV (File Ownership)
+************************************************************************************************
+		1) navigate
+			cd /data/usareur-mk-nj/
+			ls -l | grep since_db
+		
+		2) Who is the Owner of this Directory?
+		
+		3) Change the owner and group ownership to root
+			chown -R root:root since_db
+			
+		4) Will elasticsearch be able to write to this directory now?
+		
+		5) change it back to ownership of elasticsearch
+			chown -R elasticsearch:elasticsearch since_db
+			
+************************************************************************************************
+PART V (RSYNC)
+************************************************************************************************
+	1) TIME permitting we will go over in-depth RSYNC. But this is beyond the scope of this Analyst Course

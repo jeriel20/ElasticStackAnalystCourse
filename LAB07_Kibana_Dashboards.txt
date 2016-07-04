@@ -1,0 +1,41 @@
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+					KIBANA DASHBOARDS
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Action: Familiarize Students with Kibana Dashboards. Build, save, and edit custom dashboards using the saved visualizations from previous lab.
+
+Condition: Given a classroom environment, student laptops, VM’s, and student handouts.
+
+Standard: Successfully create, save, and edit custom Dashboards for Bro Logs. Demonstrate at least 1 custom Dashboards to the class. 
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=--=--=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+************************
+PART I (Dashboards Tab GUI)
+************************
+	1) Open Kibana via the shortcut on the Desktop of ELK1 {.10}
+	
+	2) After authenticating, navigate to the Dashboards tab
+		
+	3) Select the + button. You will now be able to see the Visualizations you have saved
+	
+	4) Select the visualizations you want to have on a singe Dashboard.
+	
+	5) Set the absoute Time range form May 4th 2016 to May 6th 2016. you will see in the time graph all the logs.
+
+	6) For this course all the Bro Logs data set was generated on the above aforementioned dates.
+	
+	7) Instructor will demontrate how to build, save, edit, share, dashboards.
+	
+
+*************************************
+PART II (BRO Logs KIBANA Dashboard)
+*************************************
+	1) Build 2 custom Dashboards using the visualizations you built in the previous lab.
+	
+	2) Students will come up to the front with their laptop and demontrate to the class 1 of their custom Dashboards.
+	
+	3) Instructor will demontrate how to conduct analysis using Dashboards
+	
+	
+	
+		
