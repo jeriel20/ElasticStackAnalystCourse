@@ -5,7 +5,11 @@ The material in this repo was built to teach students how to conduct analysis us
 
 -Build custom queries and dashboards on Kibana
 
--Build custom configuration files for Logstash
+-Troubleshoot ELK and critical services
 
-** The Notes are not perfect. The instructions in this repo are best suited for Intermediate Linux Users.
+- Linux Concepts
+
+- BRO Intel Framework and BRO overview
+
+** The Notes/Labs are not perfect. The instructions in this repo are best suited for Intermediate Linux Users.
 
