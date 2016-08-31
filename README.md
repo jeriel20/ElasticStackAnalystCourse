@@ -1,4 +1,4 @@
-# ElasticStackAnalystCourse
+# ElasticStack Analyst Course
 The material in this repo was built to teach students how to conduct analysis using the Kibana Front End. In addition, the labs are mainly designed to teach students how to:
 
 -Manage Elasticsearch Cluster
