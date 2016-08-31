@@ -13,3 +13,5 @@ The material in this repo was built to teach students how to conduct analysis us
 
 ** The Notes/Labs are not perfect. The instructions in this repo are best suited for Intermediate Linux Users.
 
+*** The Slide Deck for this course is Unclassified, however is not on github. If you want the slide deck, send me an email. Thanks!
+
